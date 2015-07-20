@@ -1,0 +1,29 @@
+{
+  "name": "survivor",
+  "version": "0.0.0",
+  "homepage": "https://github.com/austinpickett/survivor",
+  "authors": [
+    "Austin Pickett <pickett.austin@gmail.com>"
+  ],
+  "description": "survivor app with nodejs vote users off",
+  "moduleType": [
+    "node"
+  ],
+  "keywords": [
+    "crud",
+    "nodejs",
+    "mongo",
+    "random"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "materialize": "~0.97.0"
+  }
+}
