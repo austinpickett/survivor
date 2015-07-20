@@ -1,9 +1,21 @@
 doctype html
 html
-  head
-    title= title
-    link(rel='stylesheet', href='/css/style.css')
-  body
-    block content
-    script(src='/cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.j')
-    script(src='js/global.js')
+	head
+		title= title
+		link(rel='stylesheet', href='/vendor/materialize/dist/css/materialize.min.css')
+	body
+
+		nav
+			.nav-wrapper
+				a(href="#" class="brand-logo") Survivor
+				ul(id="nav-mobile" class="right hide-on-med-and-down")
+					li
+						a(href="/users/new") Add new user
+					li
+						a(href="#") Start survivor
+
+
+		div.container
+			block content
+		script(src='/vendor/jquery/dist/jquery.min.js')
+		script(src='/vendor/materialize/dist/js/materialize.min.js')

@@ -7,11 +7,11 @@ simple CRUD application using Node.JS and MongoDB.
 * Update User
 * Destroy User
 * Auto-assigned 'false' immunity on create
+* MaterializeCSS
 
 # Todo
 * Refactor code to be cleaner
 * Write in CoffeeScript
-* Add Materialize CSS
 * Add more data
 * 'Start' survivor mode (random user gets immunity)
 * 'Vote' (users randomly get assigned another user ID as a vote)
