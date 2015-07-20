@@ -14,8 +14,8 @@ router.get('/', function(req, res) {
 });
 
 // Get new user route
-router.get('/new', function(req, res) {
-	res.render('newuser', { title: 'Add New User'});
+router.get('/add', function(req, res) {
+	res.render('users/new', { title: 'Add New User'});
 });
 
 /* POST to add user */
@@ -48,8 +48,10 @@ router.get('/:id', function(req, res) {
 	var userId = req.params.id;
 
 	collection.find({"_id":userId},{},function(e,docs) {
-		res.render('showuser', {
-			"showuser": docs
+		res.render('users/show', {
+			username: docs[0].username,
+			email: docs[0].email,
+			immunity: docs[0].immunity
 		});
 	});
 });
@@ -80,7 +82,7 @@ router.get('/edit/:id', function(req, res) {
 	var userId = req.params.id;
 
 	collection.find({_id:userId},{},function(e,docs) {
-		res.render('edituser', {
+		res.render('users/edit', {
 			"edituser": docs,
 			title: "Edit " + docs[0].username
 		});
