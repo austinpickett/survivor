@@ -1,0 +1,32 @@
+extends layout
+
+block content
+	#wrapper
+		if message
+			h2 message	
+		h2.inline User List 
+		ul
+			li
+				a(href="/users/new")= "Add new user"
+			li
+				a(href="/users/survivor")= "Survivor mode"
+		#userList
+			table
+				thead
+					th UserName
+					th Email
+					th Immunity
+					th Edit
+					th Delete
+				tbody
+					each user, i in userlist
+						tr
+							td
+								a(href="/users/"+user._id)=user.username
+							td= user.email
+							td= user.imunity
+							td
+								a(href="/users/edit/"+user._id) Edit
+								
+							td
+								a(href="/users/delete/"+user._id) Delete

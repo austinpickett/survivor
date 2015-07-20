@@ -1,0 +1,10 @@
+extends layout
+
+block content		
+	h1= title
+	each user, i in edituser
+		form#formAddUser(name="edituser",method="post",action="/users/edit/"+user._id)
+			input#inputUserName(type="text", placeholder=user.username, name="username")
+			input#inputUserEmail(type="text", placeholder=user.email, name="useremail")
+			input#inputUserImunity(type="text", placeholder=user.imunity, name="userimunity")
+			button#btnSubmit(type="submit") submit
