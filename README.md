@@ -6,6 +6,7 @@ simple CRUD application using Node.JS and MongoDB.
 * Read User
 * Update User
 * Destroy User
+* Auto-assigned 'false' immunity on create
 
 # Todo
 * Refactor code to be cleaner
