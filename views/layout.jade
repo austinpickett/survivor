@@ -6,13 +6,15 @@ html
 	body
 
 		nav
-			.nav-wrapper
-				a(href="#" class="brand-logo") Survivor
+			div(class="nav-wrapper col s12")
+				a(href="/" class="brand-logo") Survivor
 				ul(id="nav-mobile" class="right hide-on-med-and-down")
+					li
+						a(href="/users/") User list
 					li
 						a(href="/users/new") Add new user
 					li
-						a(href="#") Start survivor
+						a(href="/survivor/") Survivor
 
 
 		div.container

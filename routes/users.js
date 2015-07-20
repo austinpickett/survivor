@@ -7,7 +7,7 @@ router.get('/', function(req, res) {
 	var collection = db.get('usercollection');
 
 	collection.find({},{},function(e,docs) {
-		res.render('userlist', {
+		res.render('users/index', {
 			"userlist": docs
 		});
 	});
@@ -30,7 +30,7 @@ router.post('/add', function(req, res) {
 	collection.insert({
 		username: userName,
 		email: userEmail,
-		imunity: false
+		immunity: false
 	}, function(err, doc) {
 		if (err) {
 			res.send("There was a problem adding the data");
@@ -100,7 +100,7 @@ router.post('/edit/:id', function(req, res) {
 	}, {
 		username: req.body.username,
 		email: req.body.useremail,
-		imunity: req.body.userimunity
+		immunity: req.body.userimmunity
 	}, function(err) {
 		if (err) {
 			res.send("There was an error");
