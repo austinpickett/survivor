@@ -21,9 +21,10 @@ router.get('/start', function(req, res) {
 	var userCollection = db.get('usercollection');
 	userCollection.distinct("_id",{"immunity": false}, function(e,docs) {
 		var userArray = docs;
+		var immunityID = userArray[Math.floor(Math.random()*userArray.length)];
 		gameCollection.insert({
 			inProgress: true,
-			immunityID: "",
+			immunityID: immunityID,
 			usersList: userArray,
 			winner: ""
 		}, function(err, doc) {
