@@ -16,14 +16,27 @@ router.get('/', function(req, res) {
 
 router.get('/start', function(req, res) {
 	var db = req.db;
-
 	var collection = db.get('usercollection');
 
-	collection.update({}, {$set: {timeOut: null}}, {multi: true}, function(err, docs) {
-		if(err) {
-			res.send(err);
+	collection.distinct("_id", {}, function(e, docs) {
+		if (e) {
+			res.send(e);
 		} else {
-			res.redirect('/survivor/');
+			var userArray = docs;
+			var immunityID = userArray[Math.floor(Math.random()*userArray.length)];
+			collection.update({"_id": immunityID}, { $set: {immunity: true}}, function(e, docs) {
+				if(e) {
+					res.send(e);
+				} else {
+					collection.update({}, {$set: {timeOut: null}}, {multi: true}, function(e, docs) {
+						if(e) {
+							res.send(e);
+						} else {
+							res.redirect('/survivor/');
+						}
+					});
+				}
+			});
 		}
 	});
 });

@@ -1,18 +1,20 @@
-# survivor
-simple CRUD application using Node.JS and MongoDB.
+# survivor-game
+CRUD application which has users vote others out. Built with NodeJS, Express, and MongoDB
 
-# Features
-* Create User
-* Read User
-* Update User
-* Destroy User
-* Auto-assigned 'false' immunity on create
-* MaterializeCSS
+## Demo
+* run npm install survivor-game
+* add users
+* see who wins
 
-# Todo
-* Refactor code to be cleaner
-* Write in CoffeeScript
-* Add more data
-* 'Start' survivor mode (random user gets immunity)
+## Features
+* Users
+* Start survivor game
+** users reset their voted time out, random user gets immunity
+
+## Todo
 * 'Vote' (users randomly get assigned another user ID as a vote)
 * 'Next Round' (new user gets immunity)
+* Add user authentication
+* Add validation
+* Implement CoffeeScript
+* Implement AngularJS
