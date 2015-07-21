@@ -30,7 +30,8 @@ router.post('/add', function(req, res) {
 	collection.insert({
 		username: userName,
 		email: userEmail,
-		immunity: false
+		immunity: false,
+		timeOut: null
 	}, function(err, doc) {
 		if (err) {
 			res.send("There was a problem adding the data");
@@ -103,7 +104,8 @@ router.post('/edit/:id', function(req, res) {
 	}, {
 		username: req.body.username,
 		email: req.body.useremail,
-		immunity: req.body.userimmunity
+		immunity: req.body.userimmunity,
+		timeOut: req.body.usertimeout
 	}, function(err) {
 		if (err) {
 			res.send("There was an error");

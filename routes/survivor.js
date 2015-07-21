@@ -4,11 +4,11 @@ var router = express.Router();
 // Get game list route
 router.get('/', function(req, res) {
 	var db = req.db;
-	var gameCollection = db.get('gamecollection');
+	var collection = db.get('usercollection');
 
-	gameCollection.find({"inProgress":true},{},function(e,docs) {
+	collection.find({timeOut:null},{},function(e,docs) {
 		res.render('survivor/index', {
-			"gamelist": docs,
+			"userlist": docs,
 			title: "Survivor"
 		});
 	});
@@ -16,27 +16,27 @@ router.get('/', function(req, res) {
 
 router.get('/start', function(req, res) {
 	var db = req.db;
-	var gameCollection = db.get('gamecollection');
 
-	var userCollection = db.get('usercollection');
-	userCollection.distinct("_id",{}, function(err,doc) {
-		if (err) {
+	var collection = db.get('usercollection');
+	collection.distinct("_id",{}, function(e,docs) {
+		if (e) {
 			res.send(err);
 		} else {
-			var userArray = doc;
-			var immunityID = userArray[Math.floor(Math.random()*userArray.length)];
-			gameCollection.insert({
-				inProgress: true,
-				immunityID: immunityID,
-				usersList: userArray,
-				winner: ""
-			}, function(err, doc) {
-				if(err) {
-					res.send(err);
-				} else {
-					res.redirect('/survivor/');
-				}
-			});
+			var userArray = docs;
+			for (var i = 0; i<userArray.length; i++) {
+				collection.update({
+					"_id": userArray[i]
+				}, {
+					$set:
+					{timeOut: null}
+				}, function(err, docs) {
+					if(err) {
+						res.send(err);
+					} else {
+						res.redirect('/survivor/');
+					}
+				});
+			}
 		}
 	});
 });

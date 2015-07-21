@@ -2,24 +2,24 @@ extends ../layout
 
 block content
 	h1= title
-	
-	if(gamelist.length)
+
+	if(userlist.length)
 		#gameList
 		table
 			thead
-				th in progress
-				th immunity ID
-				th users
-				th winner
+				th name
+				th email
+				th immunity
+				th timeOut
 				th Edit
 				th Delete
 			tbody
-				each game, i in gamelist
+				each game, i in userlist
 					tr
-						td= game.inProgress
-						td= game.immunityID
-						td= game.usersList
-						td= game.winnerID
+						td= game.username
+						td= game.email
+						td= game.immunity
+						td= game.timeOut
 						td
 							a(href="/users/edit/"+game._id) Edit
 							
