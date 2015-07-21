@@ -2,4 +2,30 @@ extends ../layout
 
 block content
 	h1= title
-	p Welcome to #{title}
+	
+	if(gamelist.length)
+		#gameList
+		table
+			thead
+				th in progress
+				th immunity ID
+				th users
+				th winner
+				th Edit
+				th Delete
+			tbody
+				each game, i in gamelist
+					tr
+						td= game.inProgress
+						td= game.immunityID
+						td= game.usersList
+						td= game.winnerID
+						td
+							a(href="/users/edit/"+game._id) Edit
+							
+						td
+							a(href="/users/delete/"+game._id) Delete
+	else
+		div no games
+
+	a(href="/survivor/start/" class="btn waves-effect waves-light") start

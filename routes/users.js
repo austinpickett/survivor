@@ -49,6 +49,7 @@ router.get('/:id', function(req, res) {
 
 	collection.find({"_id":userId},{},function(e,docs) {
 		res.render('users/show', {
+			userId: userId,
 			username: docs[0].username,
 			email: docs[0].email,
 			immunity: docs[0].immunity
