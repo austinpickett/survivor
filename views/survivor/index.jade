@@ -3,7 +3,7 @@ extends ../layout
 block content
 	h1= title
 
-	if(userlist.length)
+	if(userlist && userlist.length)
 		#gameList
 		table
 			thead
@@ -11,6 +11,7 @@ block content
 				th email
 				th immunity
 				th timeOut
+				th vote
 				th Edit
 				th Delete
 			tbody
@@ -19,7 +20,16 @@ block content
 						td= game.username
 						td= game.email
 						td= game.immunity
-						td= game.timeOut
+						td
+							if (JSON.stringify(game.timeOut) == "null")
+								p still in the game
+							else
+								p= game.timeOut
+						td
+							if (JSON.stringify(game.vote) == "null")
+								p no vote
+							else
+								p= game.vote
 						td
 							a(href="/users/edit/"+game._id) Edit
 							
@@ -29,3 +39,4 @@ block content
 		div no games
 
 	a(href="/survivor/start/" class="btn waves-effect waves-light") start
+	a(href="/survivor/vote/" class="btn waves-effect waves-light") vote

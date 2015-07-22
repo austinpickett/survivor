@@ -31,10 +31,11 @@ router.post('/add', function(req, res) {
 		username: userName,
 		email: userEmail,
 		immunity: false,
-		timeOut: null
+		timeOut: null,
+		vote: null
 	}, function(err, doc) {
 		if (err) {
-			res.send("There was a problem adding the data");
+			res.send("There was a problem adding the data: " +err);
 		} else {
 			res.redirect("/users/");
 		}
