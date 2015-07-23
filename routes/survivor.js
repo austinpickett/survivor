@@ -1,4 +1,5 @@
 var express = require('express');
+var ObjectID = require('mongodb').ObjectID;
 var router = express.Router();
 
 // Get game list route
@@ -53,20 +54,18 @@ router.get('/vote', function(req, res) {
 		} else {
 			var userArray = docs;
 			for (var i = 0; i < userArray.length; i++) {
-				voteID.push(userArray[Math.floor(Math.random()*userArray.length)]);
-			}
-			console.log(voteID);
-			collection.update({}, {
-				$set: {
-					"vote": voteID.pop()
-				}}, {multi: true}, function(e, docs) {
-				if (e) {
-					res.send(e);
-				} else {
-					res.redirect('/survivor/');
-				}
-			});
+				collection.update({"_id": userArray[i]}, {
+					$set: {
+						"vote": userArray[Math.floor(Math.random()*userArray.length)]
+					}}, {multi: true}, function(e, docs) {
+					if (e) {
+						res.send(e);
+					}
+				});
+			}				
+
 		}
+		res.redirect('/survivor/');
 	});
 });
 
